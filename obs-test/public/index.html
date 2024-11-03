@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RTMP Stream</title>
+  </head>
+  <body>
+    <h1>RTMP 스트림 테스트</h1>
+    <video id="videoPlayer" controls autoplay></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/flv.js@1.5.0/dist/flv.min.js"></script>
+    <script>
+      if (flvjs.isSupported()) {
+        const videoElement = document.getElementById("videoPlayer");
+        const flvPlayer = flvjs.createPlayer({
+          type: "flv",
+          url: "http://localhost:8000/live/test.flv", // OBS에서 사용한 스트림 키
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+      }
+    </script>
+  </body>
+</html>
